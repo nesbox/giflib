@@ -181,8 +181,9 @@ int main(int argc, char **argv)
 		/* Skip any extension blocks in file: */
 		if (DGifGetExtension(GifFileIn, &ExtCode, &Extension) == GIF_ERROR)
 		    QuitGifError(GifFileIn, GifFileOut);
-		if (EGifPutExtension(GifFileOut, ExtCode, Extension[0],
-							Extension) == GIF_ERROR)
+                if (Extension
+                    && EGifPutExtension(GifFileOut, ExtCode,
+                                        Extension[0], Extension) == GIF_ERROR)
 		    QuitGifError(GifFileIn, GifFileOut);
 
 		/* No support to more than one extension blocks, so discard: */
