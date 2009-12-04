@@ -365,6 +365,11 @@ EGifPutImageDesc(GifFileType * GifFile,
     GifFile->Image.Height = Height;
     GifFile->Image.Interlace = Interlace;
     if (ColorMap) {
+        /* Deallocate colormap if it exists */
+        if (GifFile->Image.ColorMap) {
+            FreeMapObject(GifFile->Image.ColorMap);
+            GifFile->Image.ColorMap = NULL;
+        }
         GifFile->Image.ColorMap = MakeMapObject(ColorMap->ColorCount,
                                                 ColorMap->Colors);
         if (GifFile->Image.ColorMap == NULL) {
