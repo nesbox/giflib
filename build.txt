@@ -46,6 +46,8 @@ To do a release:
 
 1. Check a clean tree out of the repository.
 
+2. 'make distcheck' to verify the build.
+
 3. make dist
 
 4. Unpack the tarball in a fresh directory.  
